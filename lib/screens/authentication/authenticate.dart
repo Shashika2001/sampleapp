@@ -11,10 +11,21 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+
+  bool signInPage =true;
+
+  //toogle pages
+   void switchPages()async{
+    setState(() {
+      signInPage!=signInPage;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Sign_In(),
-    );
+    if(signInPage==true){
+      return Sign_In(toggle: switchPages);
+    }else{
+      return  Register(toggle: switchPages);
+    }
   }
 }
